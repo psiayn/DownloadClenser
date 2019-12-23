@@ -8,7 +8,7 @@ import platform
 
 home_dir = Path.home()
 
-if platform.system() == "Windows":
+if platform.system() == "Windows" or platform.system() == "Linux":
     downloads = home_dir / "Downloads"
     images_dir = home_dir / "Pictures" / "Downloads"
     videos_dir = home_dir / "Videos" / "Downloads"
@@ -17,6 +17,7 @@ if platform.system() == "Windows":
     music_dir = home_dir / "Music" / "Downloads"
     documents_dir = home_dir / "Documents" / "Downloads"
 else:
+    # add paths manually
     downloads = "/path/to/downloads"
     images_dir = "/path/to/images"
     videos_dir = "/path/to/videos"
