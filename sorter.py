@@ -1,12 +1,29 @@
 #!/usr/bin/env python3
 import os
 import shutil
+from pathlib import Path
+import platform
 
-#Doesn't auto create folder 
+# Auto create directories
 
-#rename paths
+home_dir = Path.home()
 
-downloads = "/path/to/downloads"
+if platform.system() == "Windows":
+    downloads = home_dir / "Downloads"
+    images_dir = home_dir / "Pictures" / "Downloads"
+    videos_dir = home_dir / "Videos" / "Downloads"
+    isos_dir = home_dir / "Documents" / "ISOs"
+    zips_dir = home_dir / "Documents" / "Zips"
+    music_dir = home_dir / "Music" / "Downloads"
+    documents_dir = home_dir / "Documents" / "Downloads"
+else:
+    downloads = "/path/to/downloads"
+    images_dir = "/path/to/images"
+    videos_dir = "/path/to/videos"
+    isos_dir = "/path/to/isos"
+    zips_dir = "/path/to/zips"
+    music_dir = "/path/to/music"
+    documents_dir = "/path/to/documents"
 
 os.chdir(downloads)
 
@@ -14,12 +31,12 @@ print(os.getcwd())
 
 files = os.listdir()
 
-images_dir = "/path/to/images"
-videos_dir = "/path/to/videos"
-isos_dir = "/path/to/isos"
-zips_dir = "/path/to/zips"
-music_dir = "/path/to/music"
-documents_dir = "/path/to/documents"
+os.makedirs(images_dir, exist_ok=True)
+os.makedirs(videos_dir, exist_ok=True)
+os.makedirs(isos_dir, exist_ok=True)
+os.makedirs(zips_dir, exist_ok=True)
+os.makedirs(music_dir, exist_ok=True)
+os.makedirs(documents_dir, exist_ok=True)
 
 images_exts = [".jpeg",".gif",".png",".jpg",".svg"]
 videos_exts = [".webm",".mpg",".mp2",".mpeg",".mpe",".mpv",".ogg",".mp4",".m4p",".m4v",".avi",".mov",".qt",".flv",".swf",".avchd"]
